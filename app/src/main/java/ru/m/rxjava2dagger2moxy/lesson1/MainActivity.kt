@@ -2,6 +2,7 @@ package ru.m.rxjava2dagger2moxy.lesson1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import ru.m.rxjava2dagger2moxy.R
 import ru.m.rxjava2dagger2moxy.databinding.ActivityMainBinding
@@ -17,11 +18,10 @@ class MainActivity : AppCompatActivity(), MainView {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
         val listener = View.OnClickListener {
-            val type = when(it.id){
-                R.id.btn_counter1->CounterType.ONE
-                R.id.btn_counter2->CounterType.TWO
-                R.id.btn_counter3->CounterType.THREE
-                else->throw IllegalStateException("no")
+            when(it.id){
+                R.id.btn_counter1->presenter.counterClick(CounterType.COUNTER1)
+                R.id.btn_counter2->presenter.counterClick(CounterType.COUNTER2)
+                R.id.btn_counter3->presenter.counterClick(CounterType.COUNTER3)
             }
         }
         mainBinding.btnCounter1.setOnClickListener(listener)
@@ -29,15 +29,12 @@ class MainActivity : AppCompatActivity(), MainView {
         mainBinding.btnCounter3.setOnClickListener(listener)
     }
 
-    //Подсказка к ПЗ: поделить на 3 отдельные функции и избавиться от index
-    override fun setButtonText(index: Int, text: String) {
-        when (index) {
-            0 -> mainBinding.btnCounter1.text = text
-            1 -> mainBinding.btnCounter2.text = text
-            2 -> mainBinding.btnCounter3.text = text
+
+    override fun setButtonText(type: CounterType, text: String) {
+        when (type) {
+            CounterType.COUNTER1 -> mainBinding.btnCounter1.text = text
+            CounterType.COUNTER2 -> mainBinding.btnCounter2.text = text
+            CounterType.COUNTER3 -> mainBinding.btnCounter3.text = text
         }
     }
-
-
-
 }

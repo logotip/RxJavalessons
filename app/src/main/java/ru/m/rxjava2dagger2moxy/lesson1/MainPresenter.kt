@@ -1,5 +1,7 @@
 package ru.m.rxjava2dagger2moxy.lesson1
 
+import android.os.Bundle
+import android.os.PersistableBundle
 import ru.m.rxjava2dagger2moxy.R
 import ru.m.rxjava2dagger2moxy.databinding.ActivityMainBinding
 
@@ -10,21 +12,25 @@ class MainPresenter(private val view: MainView) {
     //Архитектурная ошибка. В качестве практического задания -- исправить
     fun counterClick(type: CounterType) {
         when (type) {
-            CounterType.ONE -> {
+            CounterType.COUNTER1 -> {
                 val nextValue = model.next(0)
-                view.setButtonText(0, nextValue.toString())
+                view.setButtonText(CounterType.COUNTER1, nextValue.toString())
             }
-            CounterType.TWO -> {
+            CounterType.COUNTER2 -> {
                 val nextValue = model.next(1)
-                view.setButtonText(1, nextValue.toString())
+                view.setButtonText(CounterType.COUNTER2, nextValue.toString())
             }
-            CounterType.THREE -> {
+            CounterType.COUNTER3 -> {
                 val nextValue = model.next(2)
-                view.setButtonText(2, nextValue.toString())
+                view.setButtonText(CounterType.COUNTER3, nextValue.toString())
             }
         }
     }
 }
 enum class CounterType{
-    ONE,TWO,THREE
+    COUNTER1,COUNTER2,COUNTER3
 }
+
+
+
+
