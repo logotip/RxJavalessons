@@ -1,15 +1,10 @@
 package ru.m.rxjava2dagger2moxy.lesson1
 
-import android.os.Bundle
-import android.os.PersistableBundle
-import ru.m.rxjava2dagger2moxy.R
-import ru.m.rxjava2dagger2moxy.databinding.ActivityMainBinding
-
 class MainPresenter(private val view: MainView) {
 
     private val model = CountersModel()
 
-    //Архитектурная ошибка. В качестве практического задания -- исправить
+
     fun counterClick(type: CounterType) {
         when (type) {
             CounterType.COUNTER1 -> {

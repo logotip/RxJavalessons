@@ -2,7 +2,6 @@ package ru.m.rxjava2dagger2moxy.lesson1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import ru.m.rxjava2dagger2moxy.R
 import ru.m.rxjava2dagger2moxy.databinding.ActivityMainBinding
